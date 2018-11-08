@@ -140,10 +140,10 @@ public class KarDependencyHandler implements Runnable {
         final File featureConfigFile = featureConfig.toFile();
 
         if (!featureConfigFile.isFile()) {
-            LOG.debug("kar '{}' is installed, but the feature configuration is not yet written. " +
+            LOG.debug("Kar '{}' is installed, but the feature configuration is not yet written. " +
                     "Waiting up-to 30 seconds for it to show up...");
             try {
-                for (int i = 30; i > 0 && featureConfigFile.isFile(); i--) {
+                for (int i = 30; i > 0 && !featureConfigFile.isFile(); i--) {
                     Thread.sleep(1000);
                 }
             } catch (InterruptedException e) {
